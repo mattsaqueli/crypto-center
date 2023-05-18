@@ -1,0 +1,10 @@
+.crypto-card {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.crypto-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+}
