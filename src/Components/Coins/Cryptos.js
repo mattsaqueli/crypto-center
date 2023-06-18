@@ -7,7 +7,7 @@ const Cryptos = (props) => {
       <div className='crypto-card'>
         <h3>{crypto.name}</h3>
         <h4>{crypto.symbol}</h4>
-        <h5>{crypto.priceUsd}</h5>
+        <h5>${crypto.priceUsd}</h5>
       </div>
     )
   })

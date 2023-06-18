@@ -1,7 +1,8 @@
 import './App.css';
 import React from 'react'
-import * as apiCalls from './apiCalls'
-import Cryptos from './Cryptos'
+import * as apiCalls from '../../apiCalls'
+import Cryptos from '../Coins/Cryptos'
+import Header from '../Header/Header'
 
 class App extends React.Component {
   constructor() {
@@ -12,20 +13,30 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
+    this.getData()
+    this.interval = setInterval(this.getData, 1000)
+  }
+  
+  componentWillUnmount = () => {
+    clearInterval(this.interval); 
+  }
+  
+  getData = () => {
     apiCalls.getAllCryptos()
-    .then((data) => {
-      this.setState({
-        Cryptos: data.data
+      .then((data) => {
+        this.setState({
+          Cryptos: data.data
+        });
       })
-    })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
     return (
       <main>
-        <header>
-          <h1>Crypto Center</h1>
-        </header>
+        <Header />
         <Cryptos
           displayCryptos={this.state.Cryptos}
         />
