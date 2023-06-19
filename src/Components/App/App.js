@@ -1,8 +1,10 @@
 import './App.css';
 import React from 'react'
+import { Route } from 'react-router-dom'
 import * as apiCalls from '../../apiCalls'
-import Cryptos from '../Coins/Cryptos'
+import Cryptos from '../CryptoCards/CryptoCards'
 import Header from '../Header/Header'
+import CryptoDetails from '../CryptoDetails/CryptoDetails'
 
 class App extends React.Component {
   constructor() {
@@ -14,7 +16,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     this.getData()
-    this.interval = setInterval(this.getData, 1000)
+    this.interval = setInterval(this.getData, 5000)
   }
   
   componentWillUnmount = () => {
@@ -34,15 +36,30 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.Cryptos)
     return (
       <main>
         <Header />
-        <Cryptos
-          displayCryptos={this.state.Cryptos}
+
+        <Route 
+          exact path='/' 
+          render={() => (
+            <Cryptos 
+              displayCryptos={this.state.Cryptos} 
+            />
+          )}
         />
-        <footer>
-          <h3>Crypto Center est.2023</h3>
-        </footer>
+
+        <Route 
+          exact path='/crypto/:id' 
+          render={() => (
+            <CryptoDetails
+              cryptos={this.state.Cryptos} 
+            />
+          )}
+        />
+
+
       </main>
     )
   }
