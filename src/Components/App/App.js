@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
 import * as apiCalls from '../../apiCalls'
-import Cryptos from '../Coins/Cryptos'
+import Cryptos from '../CryptoCards/CryptoCards'
 import Header from '../Header/Header'
 
 class App extends React.Component {

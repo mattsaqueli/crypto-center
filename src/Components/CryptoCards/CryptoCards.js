@@ -1,5 +1,5 @@
 import React from 'react'
-import './Cryptos.css'
+import './CryptoCards.css'
 
 const Cryptos = (props) => {
   const cryptoCards = props.displayCryptos.map(crypto => {

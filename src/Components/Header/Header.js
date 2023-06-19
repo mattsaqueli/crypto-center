@@ -9,8 +9,8 @@ const Header = () => {
       <h1>Crypto Center</h1>
       <nav className='nav-bar'>
         <button>HOME</button>
-        <button>FAVORITES</button>
         <button>FAQ</button>
+        <button>Watchlist</button>
         <input type='text' placeholder='Search...' className='search-bar'></input>
       </nav>
     </header>
