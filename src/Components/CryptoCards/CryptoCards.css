@@ -1,7 +1,6 @@
 .crypto-card {
-  border: 1px solid black;
+  border-bottom: 1px solid rgb(195, 195, 195);
   text-align: center;
-  border-radius: .5em;
   display: flex;
   justify-content: space-between;
   padding: 0em 3em 0em 3em;
@@ -20,6 +19,7 @@ a {
   }
 
 .crypto-container-header {
+  border-bottom: 1px solid rgb(195, 195, 195);
   display: flex;
   justify-content: space-between;
   padding: 0em 1em 0em 1em;
