@@ -2,11 +2,14 @@
   border: 1px solid black;
   text-align: center;
   border-radius: .5em;
+  display: flex;
+  justify-content: space-between;
+  padding: 0em 3em 0em 3em;
 }
 
 .crypto-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat;
   grid-gap: .5em;
   padding: 3em;
 }
@@ -15,3 +18,10 @@ a {
   text-decoration:none;
   color: black;
   }
+
+.crypto-container-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0em 1em 0em 1em;
+  color: grey;
+}
