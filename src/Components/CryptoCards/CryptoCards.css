@@ -10,3 +10,8 @@
   grid-gap: .5em;
   padding: 3em;
 }
+
+a {
+  text-decoration:none;
+  color: black;
+  }
