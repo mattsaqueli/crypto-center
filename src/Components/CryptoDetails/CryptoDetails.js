@@ -10,7 +10,15 @@ const CryptoDetails = ({ cryptos }) => {
   } else {
     return (
       <div className='crypto-details'>
-        <h1>{crypto.name}</h1>
+        <h1>{crypto.name} {crypto.symbol}</h1>
+        <article>
+          <p>Rank: {crypto.rank}</p>
+          <p>Current price: ${crypto.priceUsd}</p>
+          <p>Max supply: {crypto.maxSupply}</p>
+          <p>Market cap: ${crypto.marketCapUsd}</p>
+          <p>Volume 24hr: {crypto.volumeUsd24Hr}</p>
+
+        </article>
       </div>
     )
   }
