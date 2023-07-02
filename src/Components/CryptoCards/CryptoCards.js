@@ -3,7 +3,6 @@ import './CryptoCards.css'
 import { Link } from 'react-router-dom'
 
 const CryptoCards = ({ displayCryptos, addToWatchlist, removeFromWatchlist, isCryptoInWatchlist }) => {
-
   const cryptoCards = displayCryptos.map((crypto) => {
     const formattedPrice = parseFloat(crypto.priceUsd).toFixed(2)
     const formattedMarketCap = parseFloat(crypto.marketCapUsd).toFixed(2)
@@ -16,32 +15,39 @@ const CryptoCards = ({ displayCryptos, addToWatchlist, removeFromWatchlist, isCr
       }
     }
 
-
     return (
-      <Link to={`/crypto/${crypto.id}`} className='crypto-card' key={crypto.id}>
-        <h4>{crypto.rank}</h4>
-        <h4>{crypto.name}</h4>
-        <h4>{crypto.symbol}</h4>
-        <h4>${formattedPrice}</h4>
-        <h4>${formattedMarketCap}</h4>
-      <button onClick={handleWatchlistToggle}>
-        {isCryptoInWatchlist(crypto.id) ? 'Remove from Watchlist' : 'Add to Watchlist'}
-      </button>
-      </Link>
+      <tr className='crypto-card' key={crypto.id}>
+        <td>{crypto.rank}</td>
+        <td>
+          <Link to={`/crypto/${crypto.id}`} className='crypto-info'>
+            {crypto.name}
+          </Link>
+        </td>
+        <td>{crypto.symbol}</td>
+        <td>${formattedPrice}</td>
+        <td>${formattedMarketCap}</td>
+        <td>
+          <button onClick={handleWatchlistToggle} className='crypto-info'>
+            {isCryptoInWatchlist(crypto.id) ? 'Remove from Watchlist' : 'Add to Watchlist'}
+          </button>
+        </td>
+      </tr>
     )
   })
 
   return (
     <table className='crypto-container'>
-      <tr className='crypto-container-header'>
-        <th>Rank</th>
-        <th>Name</th>
-        <th>Ticker</th>
-        <th>Current Price</th>
-        <th>Market Cap</th>
-        <th>Watchlist</th>
-      </tr>
-      {cryptoCards}
+      <thead>
+        <tr className='crypto-container-header'>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Ticker</th>
+          <th>Current Price</th>
+          <th>Market Cap</th>
+          <th>Watchlist</th>
+        </tr>
+      </thead>
+      <tbody>{cryptoCards}</tbody>
     </table>
   )
 }
