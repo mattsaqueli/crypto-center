@@ -1,27 +1,41 @@
 .crypto-card {
   border-bottom: 1px solid rgb(195, 195, 195);
   text-align: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 0em 3em 0em 3em;
+}
+
+.crypto-info {
+  text-decoration: none;
+  color: black;
+}
+
+.watchlist-btn {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.watchlist-btn:hover {
+  background-color: rgb(56,97,251);
+  color: white;
 }
 
 .crypto-container {
-  display: grid;
-  grid-template-rows: repeat;
-  grid-gap: .5em;
-  padding: 3em;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-a {
-  text-decoration:none;
-  color: black;
-  }
-
 .crypto-container-header {
-  border-bottom: 1px solid rgb(195, 195, 195);
-  display: flex;
-  justify-content: space-between;
-  padding: 0em 1em 0em 1em;
-  color: grey;
+  background-color: grey;
+  color: white;
+  font-weight: bold;
+}
+
+.crypto-container th,
+.crypto-container td {
+  padding: 8px;
+  text-align: left;
+}
+
+.crypto-card:hover {
+  background-color: rgb(235, 235, 235);
+  cursor: pointer;
 }

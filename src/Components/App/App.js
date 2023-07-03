@@ -5,12 +5,14 @@ import * as apiCalls from '../../apiCalls'
 import Cryptos from '../CryptoCards/CryptoCards'
 import Header from '../Header/Header'
 import CryptoDetails from '../CryptoDetails/CryptoDetails'
+import Watchlist from '../Watchlist/Watchlist'
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      Cryptos: []
+      Cryptos: [],
+      Watchlist: []
     }
   }
 
@@ -35,6 +37,22 @@ class App extends React.Component {
       });
   }
 
+  addToWatchlist = (cryptoId) => {
+    this.setState((prevState) => ({
+      Watchlist: [...prevState.Watchlist, cryptoId]
+    }))
+  }
+
+  removeFromWatchlist = (cryptoId) => {
+    this.setState((prevState) => ({
+      Watchlist: prevState.Watchlist.filter((id) => id !== cryptoId),
+    }))
+  }
+
+  isCryptoInWatchlist = (cryptoId) => {
+    return this.state.Watchlist.includes(cryptoId)
+  }
+
   render() {
     console.log(this.state.Cryptos)
     return (
@@ -45,7 +63,10 @@ class App extends React.Component {
           exact path='/' 
           render={() => (
             <Cryptos 
-              displayCryptos={this.state.Cryptos} 
+              displayCryptos={this.state.Cryptos}
+              addToWatchlist={this.addToWatchlist}
+              removeFromWatchlist={this.removeFromWatchlist}
+              isCryptoInWatchlist={this.isCryptoInWatchlist}
             />
           )}
         />
@@ -54,7 +75,21 @@ class App extends React.Component {
           exact path='/crypto/:id' 
           render={() => (
             <CryptoDetails
-              cryptos={this.state.Cryptos} 
+              cryptos={this.state.Cryptos}
+              addToWatchlist={this.addToWatchlist}
+              removeFromWatchlist={this.removeFromWatchlist}
+              isCryptoInWatchlist={this.isCryptoInWatchlist}
+            />
+          )}
+        />
+
+        <Route 
+          exact path='/watchlist' 
+          render={() => (
+            <Watchlist
+              watchlist={this.state.Watchlist}
+              cryptos={this.state.Cryptos}
+              removeFromWatchlist={this.removeFromWatchlist}
             />
           )}
         />
