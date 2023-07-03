@@ -5,6 +5,7 @@ import * as apiCalls from '../../apiCalls'
 import Cryptos from '../CryptoCards/CryptoCards'
 import Header from '../Header/Header'
 import CryptoDetails from '../CryptoDetails/CryptoDetails'
+import Watchlist from '../Watchlist/Watchlist'
 
 class App extends React.Component {
   constructor() {
@@ -38,7 +39,7 @@ class App extends React.Component {
 
   addToWatchlist = (cryptoId) => {
     this.setState((prevState) => ({
-      Watchlist: [prevState.Watchlist, cryptoId]
+      Watchlist: [...prevState.Watchlist, cryptoId]
     }))
   }
 
@@ -78,6 +79,17 @@ class App extends React.Component {
               addToWatchlist={this.addToWatchlist}
               removeFromWatchlist={this.removeFromWatchlist}
               isCryptoInWatchlist={this.isCryptoInWatchlist}
+            />
+          )}
+        />
+
+        <Route 
+          exact path='/watchlist' 
+          render={() => (
+            <Watchlist
+              watchlist={this.state.Watchlist}
+              cryptos={this.state.Cryptos}
+              removeFromWatchlist={this.removeFromWatchlist}
             />
           )}
         />

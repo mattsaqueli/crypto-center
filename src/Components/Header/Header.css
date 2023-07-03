@@ -1,10 +1,12 @@
 header > h1 {
   padding-top: 1em;
   text-align: center;
+  margin-top: 0em;
 }
 
 .header-container {
   height: 7em;
+  background-color: rgb(239, 239, 239);
 }
 
 .nav-bar {
@@ -22,7 +24,8 @@ button {
 }
 
 button:hover {
-  color: rgb(74, 74, 205);
+  color: rgb(56,97,251);
+  cursor: pointer;
 }
 
 input {

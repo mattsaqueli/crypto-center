@@ -18,7 +18,7 @@ const Header = () => {
         </Link>
 
         <Link to='watchlist'>
-          <button>Watchlist</button>
+          <button>WATCHLIST</button>
         </Link>
         
         <input type='text' placeholder='Search...' className='search-bar'></input>

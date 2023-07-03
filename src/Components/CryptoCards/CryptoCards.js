@@ -27,7 +27,7 @@ const CryptoCards = ({ displayCryptos, addToWatchlist, removeFromWatchlist, isCr
         <td>${formattedPrice}</td>
         <td>${formattedMarketCap}</td>
         <td>
-          <button onClick={handleWatchlistToggle} className='crypto-info'>
+          <button onClick={handleWatchlistToggle} className='watchlist-btn'>
             {isCryptoInWatchlist(crypto.id) ? 'Remove from Watchlist' : 'Add to Watchlist'}
           </button>
         </td>
