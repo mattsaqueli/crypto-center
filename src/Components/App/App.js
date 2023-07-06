@@ -12,8 +12,9 @@ class App extends React.Component {
     super()
     this.state = {
       Cryptos: [],
-      Watchlist: []
-    }
+      Watchlist: [],
+      searchTerm: ''
+    }    
   }
 
   componentDidMount = () => {
@@ -53,17 +54,24 @@ class App extends React.Component {
     return this.state.Watchlist.includes(cryptoId)
   }
 
+  handleSearch = (event) => {
+    this.setState({ searchTerm: event.target.value })
+  }
+
   render() {
-    console.log(this.state.Cryptos)
+    const filteredCryptos = this.state.Cryptos.filter(crypto =>
+      crypto.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    )
+
     return (
       <main>
-        <Header />
+        <Header handleSearch={this.handleSearch} />
 
         <Route 
           exact path='/' 
           render={() => (
             <Cryptos 
-              displayCryptos={this.state.Cryptos}
+              displayCryptos={filteredCryptos}
               addToWatchlist={this.addToWatchlist}
               removeFromWatchlist={this.removeFromWatchlist}
               isCryptoInWatchlist={this.isCryptoInWatchlist}

@@ -4,8 +4,12 @@
 }
 
 .crypto-info {
-  text-decoration: none;
   color: black;
+  font-weight: bold;
+}
+
+.crypto-info:hover {
+  color: rgb(56,97,251);
 }
 
 .watchlist-btn {
@@ -33,9 +37,4 @@
 .crypto-container td {
   padding: 8px;
   text-align: left;
-}
-
-.crypto-card:hover {
-  background-color: rgb(235, 235, 235);
-  cursor: pointer;
 }

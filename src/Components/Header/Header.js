@@ -2,7 +2,7 @@ import React from 'react'
 import './Header.css'
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ handleSearch }) => {
 
 
   return (
@@ -21,7 +21,13 @@ const Header = () => {
           <button>WATCHLIST</button>
         </Link>
         
-        <input type='text' placeholder='Search...' className='search-bar'></input>
+        <input
+          type='text'
+          placeholder='Search...'
+          className='search-bar'
+          onChange={handleSearch}
+        />
+
       </nav>
     </header>
   )
