@@ -19,10 +19,6 @@ const Header = ({ onSearch }) => {
           <button>HOME</button>
         </Link>
 
-        <Link to='faq'>
-          <button>FAQ</button>
-        </Link>
-
         <Link to='watchlist'>
           <button>WATCHLIST</button>
         </Link>
