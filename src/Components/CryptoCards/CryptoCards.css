@@ -4,7 +4,7 @@
 }
 
 .crypto-info {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: black;
 }
 
@@ -35,7 +35,7 @@
   text-align: left;
 }
 
-.crypto-card:hover {
-  background-color: rgb(235, 235, 235);
+.crypto-info:hover {
+  color: blue;
   cursor: pointer;
 }

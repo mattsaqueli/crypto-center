@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 import React from 'react'
 import { Route } from 'react-router-dom'
 import * as apiCalls from '../../apiCalls'
@@ -12,7 +12,8 @@ class App extends React.Component {
     super()
     this.state = {
       Cryptos: [],
-      Watchlist: []
+      Watchlist: [],
+      searchQuery: '',
     }
   }
 
@@ -20,21 +21,21 @@ class App extends React.Component {
     this.getData()
     this.interval = setInterval(this.getData, 5000)
   }
-  
+
   componentWillUnmount = () => {
-    clearInterval(this.interval); 
+    clearInterval(this.interval) 
   }
-  
+
   getData = () => {
     apiCalls.getAllCryptos()
       .then((data) => {
         this.setState({
           Cryptos: data.data
-        });
+        })
       })
       .catch((error) => {
-        console.error(error);
-      });
+        console.error(error)
+      })
   }
 
   addToWatchlist = (cryptoId) => {
@@ -53,20 +54,35 @@ class App extends React.Component {
     return this.state.Watchlist.includes(cryptoId)
   }
 
+  handleSearchQueryChange = (query) => {
+    this.setState({ searchQuery: query })
+  }
+
+  filterCryptos = (cryptos) => {
+    const { searchQuery } = this.state
+    if (!searchQuery) {
+      return cryptos
+    }
+
+    return cryptos.filter((crypto) =>
+      crypto.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  }
+
   render() {
-    console.log(this.state.Cryptos)
     return (
       <main>
-        <Header />
+        <Header onSearch={this.handleSearchQueryChange} />
 
         <Route 
           exact path='/' 
           render={() => (
             <Cryptos 
-              displayCryptos={this.state.Cryptos}
+              displayCryptos={this.filterCryptos(this.state.Cryptos)}
               addToWatchlist={this.addToWatchlist}
               removeFromWatchlist={this.removeFromWatchlist}
               isCryptoInWatchlist={this.isCryptoInWatchlist}
+              searchQuery={this.state.searchQuery}
             />
           )}
         />
@@ -93,12 +109,10 @@ class App extends React.Component {
             />
           )}
         />
-
-
       </main>
     )
   }
 
 }
 
-export default App;
+export default App
