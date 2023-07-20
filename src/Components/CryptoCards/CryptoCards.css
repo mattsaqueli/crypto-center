@@ -4,7 +4,6 @@
 }
 
 .crypto-info {
-  /* text-decoration: none; */
   color: black;
 }
 
@@ -38,4 +37,11 @@
 .crypto-info:hover {
   color: blue;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .crypto-container th,
+  .crypto-container td {
+    padding: 5px;
+  }
 }
